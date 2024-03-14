@@ -1,0 +1,26 @@
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+
+  <h3>
+    <a
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', product.id]">
+      {{ product.name }}
+    </a>
+  </h3>
+  <p *ngIf="product.color">
+    Farbe: {{ product?.color }}
+  </p>
+  <p *ngIf="product.equipement">
+    Ausstatung: {{ product?.equipement }}
+
+  <p *ngIf="product.price">
+    Preis: {{ product?.price }}
+  </p>
+  <p *ngIf="product.description">
+    Beschreibung: {{ product?.description }}
+  </p>
+
+
+</div>

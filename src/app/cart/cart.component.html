@@ -1,0 +1,98 @@
+<h3>Übersicht</h3>
+
+
+<table mat-table [dataSource]="items" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Klasse</th>
+    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef>Typ</th>
+    <td mat-cell *matCellDef="let element">{{element.type}}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="motor">
+    <th mat-header-cell *matHeaderCellDef>Motor</th>
+    <td mat-cell *matCellDef="let element">{{element.motor}}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="color">
+    <th mat-header-cell *matHeaderCellDef>Farbe</th>
+    <td mat-cell *matCellDef="let element">{{element.color}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="equipement">
+    <th mat-header-cell *matHeaderCellDef>Sonderausstatung</th>
+    <td mat-cell *matCellDef="let element">{{element.equipement}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Preis</th>
+    <td mat-cell *matCellDef="let element">{{element.price  | currency:'EUR':true}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Aktionen</th>
+    <td mat-cell *matCellDef="let element"> <button style="margin-right: 10px;"
+      (click)="edit(element.id)"><span class="material-icons" style="color: white;margin-right: 10px">edit</span></button>
+    <button
+      (click)="delete(element.id)"><span class="material-icons" style="color: white;margin-right: 10px">delete</span></button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<form [formGroup]="form">
+  <h3>Neues Produkt</h3>
+
+  <div>
+    <label for="name">
+      Klasse
+    </label>
+    <input id="name" type="text" formControlName="name">
+  </div>
+  <div>
+    <label for="type">
+      Type
+    </label>
+    <input id="type" type="text" formControlName="type">
+  </div>
+
+  <div>
+    <label for="motor">
+      Motor
+    </label>
+    <input id="motor" type="text" formControlName="motor">
+  </div>
+
+  <div>
+    <label for="color">
+      Farbe
+    </label>
+    <input id="color" type="text" formControlName="color">
+  </div>
+
+  <div>
+    <label for="equipement">
+      Ausstatung
+    </label>
+    <input id="equipement" type="text" formControlName="equipement">
+  </div>
+
+  <div>
+    <label for="price">
+      Preis
+    </label>
+    <input id="price" type="text" formControlName="price">
+  </div>
+
+  <button class="button" (click)="add()">Add</button>
+
+</form>
